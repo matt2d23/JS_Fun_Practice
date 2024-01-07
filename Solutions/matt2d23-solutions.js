@@ -46,11 +46,48 @@ const max = (...nums) => nums.reduce((accumulator, currentValue) => accumulator 
 
 const addRecurse = (...nums) => {
     if (nums.length === 1) {
-        return nums[0]
+        return nums[0];
     } else {
         return nums.shift() + addRecurse(...nums);
     }
 }
+
+// 13. Write a function mulRecurse that is the generalized mul function but uses recursion
+
+const mulRecurse = (...nums) => {
+    if (nums.length === 1) {
+        return nums[0];
+    } else {
+        return nums.shift() * mulRecurse(...nums);
+    }
+}
+
+// 14. Write a function minRecurse that is the generalized min function but uses recursion
+
+const minRecurse = (...nums) => {
+    if (nums.length === 1) {
+        return nums[0];
+    } else {
+        return minRecurse(nums.reduce((accumulator, currentValue) => accumulator < currentValue ? accumulator : currentValue));
+    }
+}
+
+// 15. Write a function maxRecurse that is the generalized min function but uses recursion
+
+const maxRecurse = (...nums) => {
+    if (nums.length === 1) {
+        return nums[0];
+    } else {
+        return maxRecurse(nums.reduce((accumulator, currentValue) => accumulator > currentValue ? accumulator : currentValue));
+    }
+}
+
+
+
+
+
+
+// exports for testing
 
 module.exports = {
     identity,
@@ -65,9 +102,9 @@ module.exports = {
     min,
     max,
     addRecurse,
-    // mulRecurse,
-    // minRecurse,
-    // maxRecurse,
+    mulRecurse,
+    minRecurse,
+    maxRecurse,
     // not,
     // acc,
     // accPartial,
