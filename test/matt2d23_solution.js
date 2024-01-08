@@ -4,7 +4,7 @@ const filename = 'matt2d23-solutions';
 const sol = require('../Solutions/' + filename);
 require('mocha-sinon');
 
-describe('JS_Fun_Practice', function() {
+describe('matt2d23-solutions', function() {
     describe('identity()', function(){
         it('takes an argument and returns that argument', function() {
             assert.equal(sol.identity(3), 3);
