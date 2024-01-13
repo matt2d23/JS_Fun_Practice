@@ -88,12 +88,6 @@ const not = (fn) => {
     return !fn;
 }
 
-function test() {
-    return true;
-}
-
-console.log(not(test));
-
 // 17. Write a function acc that takes a function and an initial value,
 // and returns a function that runs the initial function on each argument, accumulating the result
 
@@ -104,21 +98,19 @@ function acc(func, initial) {
     }
 }
 
-function addition(x,y) {
-    return x+y;
+// 18. Write a function accPartial that takes in a function, a start index, and an end index, and returns a function that 
+// accumulates a subset of its arguments by applying the given function to all elements between start and end.
+
+function accPartial(func, start, end) {
+    return (...args) => {
+        let subset = args.slice(start, end);
+        let result = subset.reduce((accumulator, currentValue) => func(accumulator, currentValue));
+        args.splice(start, subset.length);
+        args.push(result);
+        args.sort((a,b) => a > b);
+        return args;
+    }
 }
-
-function multiply(x,y) {
-    return x*y
-}
-
-let add2 = acc(addition, 0);
-let mult = acc(multiply, 1);
-
-console.log(add2(1,2,4)); // 7
-console.log(mult(1,2,4)); // 8
-
-
 
 // exports for testing
 
@@ -140,7 +132,7 @@ module.exports = {
     maxRecurse,
     not,
     acc,
-    // accPartial,
+    accPartial,
     // accRecurse,
     // fill,
     // fillRecurse,
